@@ -9,7 +9,7 @@
       <%= truncate(movie.description, length: 40, separator: ' ') %>
     </p>
     <p>
-      Released on: <%= movie.released_on %>
+      Released on: <%= year_of(movie) %>
     <p>
 
   <% end %>
