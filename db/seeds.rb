@@ -136,5 +136,15 @@ Movie.create!([
     released_on: "2017-06-02",
     rating: "PG-13",
     total_gross: 821_847_012
+  },
+  {
+    title: "CatCatLaroskyyy",
+    description:
+    %{
+      Larson Laroskyyy seems to be the most beautiful cat in the World. And she knows it. There no sense to deny that. That's the fact!!!!!
+    }.squish,
+    released_on: "200-12-12",
+    rating: "PG-20",
+    total_gross: 741852357
   }
 ])
