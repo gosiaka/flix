@@ -22,4 +22,10 @@ class MoviesController < ApplicationController
   def new
     @movie = Movie.new
   end
+
+  def create
+    movie_params = params.require(:movie).permit(:title, :description, :rating, :released_on, :total_gross)
+    @movie = Movie.create(movie_params)
+    redirect_to @movie
+  end
 end
