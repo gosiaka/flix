@@ -3,7 +3,7 @@
 <ul class="reviews">
   <% @reviews.each do |r| %>
     <li>
-      <%= pluralize(r.stars, "star") %>
+      <%= render "shared/stars", percent: r.stars_as_percent %>
       <p>
         <%= r.name %>:
         <span class="date">
