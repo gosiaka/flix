@@ -13,7 +13,11 @@
       <p>
         <%= r.comment %>
       </p>       
+      <p>
+        <%= link_to 'Delete Review', movie_review_path(r.movie, r), class: "buton", method: :Delete, data: {confirm: "Are you sure?"} %>
+      </p>
     </li>
+    
   <% end %>
   <section class="movie-details">
     <div class="details">
