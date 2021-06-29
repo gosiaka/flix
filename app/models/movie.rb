@@ -15,8 +15,14 @@ class Movie < ApplicationRecord
   validates :rating, inclusion: { in: RATINGS }
 
   def flop?
-    self.total_gross.blank? || self.total_gross < 225000000
+    if reviews.size > 50 && reviews.average(:stars) >= 4
+      false
+    else
+      self.total_gross.blank? || self.total_gross < 225000000
+    end
   end
+
+  # Change the definition of the flop? method so that cult classics aren’t included. For example, if a movie has more than 50 reviews and the average review is 4 stars or better, then the movie shouldn’t be a flop regardless of the total gross.
 
   def self.released
     where("released_on < ?", Time.now ).order(released_on: :desc)
