@@ -22,6 +22,14 @@ class Movie < ApplicationRecord
     where("released_on < ?", Time.now ).order(released_on: :desc)
   end
 
+  def average_stars
+    self.reviews.average(:stars) || 0.0
+  end
+
+  def average_stars_as_percent
+    (average_stars / 5.0) * 100.0
+  end
+
   # def self.hit_movies
   #   where("total_gross >= 300000000").order(total_gross: :desc)
   # end
