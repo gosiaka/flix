@@ -2,10 +2,16 @@
   <nav>
       <%= link_to (image_tag"logo"), root_path %>
       <%# link_to image_tag("logo"), root_path %>
-      <ul>
-        <li>
-          <%= link_to 'All MOOOOVIES', movies_path %>
-        </li>
-      </ul>
+
+    <ul class="left">
+      <li>
+        <%= link_to "All MOOOOVIES", movies_path %>
+      </li>
+    </ul>
+    <ul class="rignt">
+      <li>
+        <%= link_to 'Sign Up', signup_path, class: "button" %>
+      </li>
+    </ul>     
   </nav>      
 </header>
