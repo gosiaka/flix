@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
   get "signup" => "users#new"
 
-  resource :session, only: [:new, :create, :destroy] # singular resource
+  resource :session, only: [:create, :destroy] # singular resource
+  get "signin" => "sessions#new" # custom route for Signup Page
+
   
   resources :movies do
     resources :reviews, only: [:index, :new, :create, :destroy, :edit, :update]
