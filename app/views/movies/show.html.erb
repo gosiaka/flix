@@ -34,8 +34,11 @@
     </div>
   </div>
 </section>
-<section class="admin">
-  <%= link_to 'EDIT', edit_movie_path(@movie), class: "button" %>
-  <%= link_to 'Delete movie', movie_path, class: "button",
-  method: :Delete, data: {confirm: "Reallyyyy????"} %>
-</section>
+
+<% if current_user_admin? %>
+  <section class="admin">
+    <%= link_to 'EDIT', edit_movie_path(@movie), class: "button" %>
+    <%= link_to 'Delete movie', movie_path, class: "button",
+          method: :Delete, data: {confirm: "Reallyyyy????"} %>
+  </section>
+<% end %>
