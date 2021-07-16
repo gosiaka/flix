@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user, notice: "Nice to see you again #{user.username}"
+      redirect_to (session[:intendent_page] || user), notice: "Nice to see you again #{user.username}"
+      session[:intendent_page] = nil
     else
       flash.now[:alert] = "Invalid email/password combitanion!"
       render :new

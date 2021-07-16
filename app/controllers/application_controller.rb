@@ -4,6 +4,7 @@ private
 
   def require_sign_in
     unless current_user
+      session[:intendent_page] = request.url
       redirect_to signin_path, alert: "Please sign in"
     end
   end
