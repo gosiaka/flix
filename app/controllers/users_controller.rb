@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :require_sign_in, except: [:new, :create]
+  before_action :require_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -26,11 +27,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to @user, notice: "Account successfully updated"
     else
@@ -39,13 +38,18 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     session[:user_id] = nil
     redirect_to  movies_path, alert: "Account successfully deleted"
   end
 
   private
+
+  def require_correct_user
+    @user = User.find(params[:id])
+    # zadziała tylko przy zmianie usera (do edycji itp) w adresie URL (już nie wyświetla nam buttonów)
+    redirect_to movies_path, alert: "You're not a #{@user.username}" unless current_user?(@user)
+  end
 
   def user_params
     params.required(:user).permit(:name, :username, :email, :password, :password_confirmation)
