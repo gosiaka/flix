@@ -20,4 +20,25 @@
                       data: { confirm:"Are you sure?" }, class: "button delete" %>
       </div>
     <% end%>
+
+    <% if @reviews.present? %>
+      <h3>Your Reviews:</h3>
+      <% @reviews.each do |r| %>
+        <div class="review">
+          <div class="details">
+            <span class="title">
+              <%= link_to r.movie.title, r.movie %>    
+            </span>
+            <%= render "shared/stars", percent: r.stars_as_percent %>
+            <span class="date">
+              <%= time_ago_in_words(r.created_at) %> ago 
+            </span>
+            <p>
+              <%= r.comment %>
+              </p>
+
+          </div>
+        </div>
+      <% end %>  
+    <% end %>  
 </section>
