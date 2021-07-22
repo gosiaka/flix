@@ -39,7 +39,8 @@
         <ul>
           <% @fans.each do |user| %>
             <li>
-              <%= link_to user.name, user_path(user) %>
+              <%= profile_image(user, 35) %>
+              <%= link_to user.name, user_path(user) %>             
             </li>
           <% end %>
         </ul>        
