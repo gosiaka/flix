@@ -5,7 +5,7 @@
   <div class="details">
     <h1><%= @movie.title %></h1>
     <h2>
-    <%= year_of(@movie) %> &bull; <%= @movie.rating %>
+      <%= year_of(@movie) %> &bull; <%= @movie.rating %>
     </h2>
     <div class="reviews">
       <%= render "shared/stars", percent: @movie.average_stars_as_percent %>
@@ -33,6 +33,18 @@
       <%= render 'reviews/form', movie: @movie, review: @review %>
     </div>
   </div>
+  <aside>
+    <% if @fans.present? %>
+      <h4>Fans</h4>
+        <ul>
+          <% @fans.each do |user| %>
+            <li>
+              <%= link_to user.name, user_path(user) %>
+            </li>
+          <% end %>
+        </ul>        
+    <% end %>
+  </aside>
 </section>
 
 <% if current_user_admin? %>
