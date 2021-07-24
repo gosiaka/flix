@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :genres, only: [:index, :show, :new]
+  resources :genres
   root "movies#index"
 
   resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
