@@ -1,0 +1,18 @@
+
+<% if @genres.present? %>
+  <% @genres.each do |genre| %>
+    <section class="movie">
+      <div class="summary">
+        <h3><%= link_to genre.name, genre %></h3> 
+      </div>     
+    </section>
+  <% end %>
+<% else %>
+  <h2>Oupss... There's no genre...</h2> 
+<% end %>
+
+<% if current_user_admin? %>
+  <section class="admin">
+    <%= link_to 'Add New Genre', new_genre_path, class: "button" %>
+  </section>
+<% end %>
