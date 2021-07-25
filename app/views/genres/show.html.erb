@@ -12,3 +12,10 @@
     </ul> 
   </div>
 </section>
+
+<% if current_user_admin? %>
+  <section class="admin">    
+        <%= link_to 'Edit Genre', edit_genre_path, class: "button" %>  
+        <%= link_to 'Delete Genre', genre_path, method: :delete, class: "button" %>    
+  </section>
+<% end %>

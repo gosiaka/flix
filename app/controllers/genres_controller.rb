@@ -23,6 +23,25 @@ before_action :require_admin, except: [:index, :show]
     end   
   end
 
+  def edit
+    @genre = Genre.find(params[:id])
+  end
+
+  def update
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
+      redirect_to @genre, notice: "Genre successfully updated!"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    genre = Genre.find(params[:id])
+    genre.destroy
+    redirect_to genres_path, alert: "Genre successfully deleted!"
+  end
+
   private
 
   def genre_params
