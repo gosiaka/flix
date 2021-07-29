@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_07_28_133721) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.boolean "admin", default: false
+    t.string "slug"
   end
 
   add_foreign_key "characterizations", "genres"

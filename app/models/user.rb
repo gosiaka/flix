@@ -1,7 +1,6 @@
 class User < ApplicationRecord
 
-  before_save :format_username
-  
+  before_save :set_slug
 
   has_many :favorites, dependent: :destroy
   has_many :favorite_movies, through: :favorites, source: :movie
@@ -21,9 +20,13 @@ class User < ApplicationRecord
     Digest::MD5::hexdigest(email.downcase)
   end
 
+  def to_param
+    slug
+  end
+
   private
 
-  def format_username
-    self.username = username.capitalize    
+ def set_slug
+    self.slug = username.parameterize
   end
 end
